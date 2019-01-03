@@ -30,7 +30,7 @@ fi
 traffic_controller_external_port=${doppler_url/*:/}
 echo "traffic_controller_external_port: ${traffic_controller_external_port}" >> ${PARAMS_FILE}
 
-metron_deployment_name=$(jq -r '.instance_groups[] | select(.name == "diego_brain" or .name == "control") | .jobs[] | select(.name == "metron_agent") | select(.properties.metron_agent.deployment != null) | .properties.metron_agent.deployment' < /tmp/cf-manifest.yml)
+metron_deployment_name=cf
 echo "metron_deployment_name: ${metron_deployment_name}" >> ${PARAMS_FILE}
 
 if [[ "${mysql_address}" != "null" ]]; then
